@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte pros�m nastaven� k�dov�n� v hlavi�ce dokumentu 
+     podle pou�it�ho editoru -->
+
+<h1>Dopravní podnik</h1>
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Nechanický Jan (xnecha04)
+	    <a href="mailto:xnecha04@stud.fit.vutbr.cz">xnecha04@stud.fit.vutbr.cz</a> - 
+		SQL databáze, správa MS Azure
+	</dd>
+	<dd>Červenka Rostislav (xcerve30)
+	    <a href="mailto:xcerve30@stud.fit.vutbr.cz">xcerve30@stud.fit.vutbr.cz</a> - 
+		PHP skripty, Laravel framework, zpracování vstupních dat
+	</dd>
+  <dd>Pařilová Marie (xparil05)
+	    <a href="mailto:xparil05@stud.fit.vutbr.cz">xparil05@stud.fit.vutbr.cz</a> - 
+		HTML, CSS
+	</dd>
+	<dt>URL dokumentace</dt>
+	<dd><a href="https://www.stud.fit.vutbr.cz/~xparil05/IIS/">https://www.stud.fit.vutbr.cz/~xparil05/IIS/</a></dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="https://iis-project.azurewebsites.net/">https://iis-project.azurewebsites.net/</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<table>
+<tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin@admin.com</td><td>admin</td><td>Administrátor</td></tr>
+<tr><td>spravce@spravce.com</td><td>spravce</td><td>Správce</td></tr>
+<tr><td>technik@technik.com</td><td>technik</td><td>Technik</td></tr>
+<tr><td>dispecer@dispecer.com</td><td>dispecer</td><td>Dispečer</td></tr>
+<tr><td>ridic@ridic.com</td><td>ridic</td><td>Řidič</td></tr>
+<tr><td>user@user.com</td><td>user</td><td>Uživatel bez role</td></tr>
+</tbody></table>
+
+<h3>Video</h3>
+
+<iframe width="800" height="600"
+src="https://youtu.be/EEznBXWNY0o">
+</iframe> 
+
+<h2>Implementace</h2>
+<p>Implementace je založena na frameworku Laravel 10.33.0 a Azure web app <br>
+<p>Následující soubory .php jsou ve složce <i>app/Http/Controllers/</i>:</p>
+<b>Procházení spojů</b> implementováno v souboru  <i>WelcomeController.php</i>  <br>
+<b>Nahlášení závady</b> vozidla implementováno v souboru  <i>ZavadyController.php</i> <br>
+<b>Zobrazení plánu</b> implementováno v souboru <i>PlanController.php</i>  <br>
+<b>Přiřazení řidičů a vozidel na spoje</b> implementováno v souboru <i>DispecinkController.php</i>  <br>
+<b>Vytvoření záznamu o údržbě</b> implementováno v souboru <i>ZaznamyController.php</i>  <br>
+<b>Správa vozidel</b> a vytvoření servisního požadavku implementováno v souboru <i>VozidlaController.php</i>  <br>
+<b>Správa linek</b> implementována v souboru <i>LinkyController.php</i>  <br>
+<b>Správa spojů</b> implementována v souboru <i>SpojeController.php</i>   <br>
+<b>Správa uživatelů</b> implementována v souboru <i>UzivateleController.php</i> <br>
+<br>
+<b>SQL skript</b> pro vytvoření databázových tabulek je v souboru <i>database/create_tables.sql</i> <br>
+Inicializace databázového serveru a Azure SQL databáze proběhla přes Azure portal. <br>
+
+<b>Webové stránky</b> byly vytvořeny jazykem html, css a jednoduchý JavaScript. <br><br>
+
+Automatické odhlášení je prováděno pomocí frameworku Laravel a je nastavené na 120 minut. <br>
+</p>
+
+
+<h3>Databáze</h3>
+
+<img src="database5_0.png" alt="schéma relační databáze" style="width:800px;">
+<h2>Instalace</h2>
+
+<ul>
+<b>Potřebné prerekvizity:</b>
+<li>Composer</li>
+<li>Laravel 10.33.0</li>
+<li>PHP 8.2</li>
+<li>Azure SQL web app</li>
+<br>
+<li>1. rozbalte složku</li>
+<li>2. vstupte do složky</li>
+<li>3. spusťte příkaz: composer install</li>
+<li>4. poté příkaz: php artisan key:generate</li>
+<li>5. poté příkaz: php artisan serve</li>
+<li>6. Vytvořte vlastní lokální Azure sql databázi (např. podle návodu 
+	<a href="https://learn.microsoft.com/en-us/azure/azure-sql/database/local-dev-experience-set-up-dev-environment?view=azuresql&tabs=vscode">zde</a>) spusťte všechny create příkazy ze souboru <i>database/create_tables.sql</i> (my jsme databázi měli vytvořenou na Azure portálu)</li>
+<li>7. stránku naleznete na adrese: http://127.0.0.1:8000</li>
+</ul>
+
+<h2>Známé problémy</h2>
+<p>
+	Diakritika databáze nezvládá všechny české znaky.<br>
+	Chybí kontrola jestli řidič již v daný čas neřídí jiný spoj.<br>
+</p>
+
+
+
+</body></html>
